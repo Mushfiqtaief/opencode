@@ -176,7 +176,7 @@ function build(key: string, remote: SelectableItem, url: string, prev?: Model): 
         variants[effort] = {
           thinking: {
             type: "adaptive",
-            display: "summarized",
+            ...(model.api.id.includes("opus-4.7") ? { display: "summarized" } : {}),
           },
           effort,
         }
