@@ -2,7 +2,7 @@ import { createContext, useContext, type ParentProps, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { useTheme } from "../context/theme"
 import { useTerminalDimensions } from "@opentui/solid"
-import { SplitBorder } from "./border"
+import { CardBorderChars } from "./border"
 import { TextAttributes } from "@opentui/core"
 export type ToastOptions = {
   title?: string
@@ -34,7 +34,7 @@ export function Toast() {
           backgroundColor={theme.backgroundPanel}
           borderColor={theme[current().variant]}
           border={["left", "right"]}
-          customBorderChars={SplitBorder.customBorderChars}
+          customBorderChars={CardBorderChars}
         >
           <Show when={current().title}>
             <text attributes={TextAttributes.BOLD} marginBottom={1} fg={theme.text}>

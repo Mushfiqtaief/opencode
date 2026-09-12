@@ -20,7 +20,7 @@ import { useRoute, useRouteData } from "../../context/route"
 import { useProject } from "../../context/project"
 import { useSync } from "../../context/sync"
 import { useEvent } from "../../context/event"
-import { SplitBorder } from "../../ui/border"
+import { CardBorderChars } from "../../ui/border"
 import { useTuiPaths, useTuiTerminalEnvironment } from "../../context/runtime"
 import { Spinner } from "../../component/spinner"
 import { createSyntaxStyleMemo, generateSubtleSyntax, selectedForeground, useTheme } from "../../context/theme"
@@ -1224,7 +1224,7 @@ export function Session() {
                               marginTop={1}
                               flexShrink={0}
                               border={["left"]}
-                              customBorderChars={SplitBorder.customBorderChars}
+                              customBorderChars={CardBorderChars}
                               borderColor={theme.backgroundPanel}
                             >
                               <box
@@ -1399,7 +1399,7 @@ function UserMessage(props: {
           ref={(el: BoxRenderable) => alwaysSeparate.add(el)}
           border={["left"]}
           borderColor={color()}
-          customBorderChars={SplitBorder.customBorderChars}
+          customBorderChars={CardBorderChars}
           marginTop={props.index === 0 ? 0 : 1}
         >
           <box
@@ -1539,7 +1539,7 @@ function AssistantMessage(props: { message: AssistantMessage; parts: Part[]; las
           paddingLeft={2}
           marginTop={1}
           backgroundColor={theme.backgroundPanel}
-          customBorderChars={SplitBorder.customBorderChars}
+          customBorderChars={CardBorderChars}
           borderColor={theme.error}
         >
           <text fg={theme.textMuted}>{errorMessage(props.message.error)}</text>
@@ -2012,7 +2012,7 @@ function BlockTool(props: {
       marginTop={1}
       gap={1}
       backgroundColor={hover() ? theme.backgroundMenu : theme.backgroundPanel}
-      customBorderChars={SplitBorder.customBorderChars}
+      customBorderChars={CardBorderChars}
       borderColor={theme.background}
       onMouseOver={() => props.onClick && setHover(true)}
       onMouseOut={() => setHover(false)}

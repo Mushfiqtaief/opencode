@@ -6,7 +6,7 @@ import type { TextareaRenderable } from "@opentui/core"
 import { useTheme, selectedForeground } from "../../context/theme"
 import type { PermissionRequest } from "@opencode-ai/sdk/v2"
 import { useSDK } from "../../context/sdk"
-import { SplitBorder } from "../../ui/border"
+import { CardBorderChars } from "../../ui/border"
 import { useSync } from "../../context/sync"
 import { useProject } from "../../context/project"
 import { filetype } from "../../util/filetype"
@@ -475,9 +475,9 @@ function RejectPrompt(props: { onConfirm: (message: string) => void; onCancel: (
       backgroundColor={theme.backgroundPanel}
       border={["left"]}
       borderColor={theme.error}
-      customBorderChars={SplitBorder.customBorderChars}
+      customBorderChars={CardBorderChars}
     >
-      <box gap={1} paddingLeft={1} paddingRight={3} paddingTop={1} paddingBottom={1}>
+      <box gap={1} paddingLeft={2} paddingRight={3} paddingTop={1} paddingBottom={1}>
         <box flexDirection="row" gap={1} paddingLeft={1}>
           <text fg={theme.error}>{"△"}</text>
           <text fg={theme.text}>Reject permission</text>
@@ -634,7 +634,7 @@ function Prompt<const T extends Record<string, string>>(props: {
       backgroundColor={theme.backgroundPanel}
       border={["left"]}
       borderColor={theme.warning}
-      customBorderChars={SplitBorder.customBorderChars}
+      customBorderChars={CardBorderChars}
       {...(store.expanded
         ? { top: dimensions().height * -1 + 1, bottom: 1, left: 2, right: 2, position: "absolute" }
         : {
@@ -646,7 +646,7 @@ function Prompt<const T extends Record<string, string>>(props: {
             position: "relative",
           })}
     >
-      <box gap={1} paddingLeft={1} paddingRight={3} paddingTop={1} paddingBottom={1} flexGrow={1}>
+      <box gap={1} paddingLeft={2} paddingRight={3} paddingTop={1} paddingBottom={1} flexGrow={1}>
         <Show
           when={props.header}
           fallback={

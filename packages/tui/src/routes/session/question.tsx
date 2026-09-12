@@ -5,7 +5,7 @@ import type { TextareaRenderable } from "@opentui/core"
 import { selectedForeground, tint, useTheme } from "../../context/theme"
 import type { QuestionAnswer, QuestionRequest } from "@opencode-ai/sdk/v2"
 import { useSDK } from "../../context/sdk"
-import { SplitBorder } from "../../ui/border"
+import { CardBorderChars } from "../../ui/border"
 import { useTuiConfig } from "../../config"
 import { useBindings, useOpencodeModeStack } from "../../keymap"
 
@@ -290,9 +290,9 @@ export function QuestionPrompt(props: { request: QuestionRequest; directory?: st
       backgroundColor={theme.backgroundPanel}
       border={["left"]}
       borderColor={theme.accent}
-      customBorderChars={SplitBorder.customBorderChars}
+      customBorderChars={CardBorderChars}
     >
-      <box gap={1} paddingLeft={1} paddingRight={3} paddingTop={1} paddingBottom={1}>
+      <box gap={1} paddingLeft={2} paddingRight={3} paddingTop={1} paddingBottom={1}>
         <Show when={!single()}>
           <box flexDirection="row" gap={1} paddingLeft={1}>
             <For each={questions()}>

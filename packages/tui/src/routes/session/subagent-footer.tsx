@@ -2,7 +2,7 @@ import { createMemo, createSignal, Show } from "solid-js"
 import { useRouteData } from "../../context/route"
 import { useSync } from "../../context/sync"
 import { useTheme } from "../../context/theme"
-import { SplitBorder } from "../../ui/border"
+import { CardBorderChars } from "../../ui/border"
 import type { AssistantMessage } from "@opencode-ai/sdk/v2"
 import { Locale } from "../../util/locale"
 import { useTerminalDimensions } from "@opentui/solid"
@@ -69,8 +69,8 @@ export function SubagentFooter() {
         paddingBottom={1}
         paddingLeft={2}
         paddingRight={1}
-        {...SplitBorder}
         border={["left"]}
+        customBorderChars={CardBorderChars}
         borderColor={theme.border}
         flexShrink={0}
         backgroundColor={theme.backgroundPanel}
