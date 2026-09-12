@@ -33,7 +33,7 @@ export function Home() {
   const promptMaxWidth = createMemo(() => {
     const configured = tuiConfig.prompt?.max_width
     if (configured === "auto") return Math.max(75, Math.floor(dimensions().width * 0.7))
-    return configured ?? 75
+    return configured ?? Math.min(100, Math.max(80, Math.floor(dimensions().width * 0.85)))
   })
   let sent = false
 
@@ -71,7 +71,7 @@ export function Home() {
     <HomeSessionDestinationProvider>
       <box flexGrow={1} alignItems="center" paddingLeft={2} paddingRight={2}>
         <box flexGrow={1} minHeight={0} />
-        <box height={4} minHeight={0} flexShrink={1} />
+        <box height={1} minHeight={0} flexShrink={1} />
         <box flexShrink={0}>
           <pluginRuntime.Slot name="home_logo" mode="replace">
             <Logo />

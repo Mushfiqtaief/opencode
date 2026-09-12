@@ -1,12 +1,20 @@
 import type { TuiPlugin, TuiPluginApi } from "@opencode-ai/plugin/tui"
 import type { BuiltinTuiPlugin } from "../builtins"
 import { createMemo, Show } from "solid-js"
+import { useTerminalDimensions } from "@opentui/solid"
 import { Tips } from "./tips-view"
 import { useBindings } from "../../keymap"
 
 const id = "internal:home-tips"
 
 function View(props: { api: TuiPluginApi; hidden: boolean; show: boolean; connected: boolean }) {
+  const dimensions = useTerminalDimensions()
+  const maxWidth = createMemo(() => {
+    const configured = props.api.tuiConfig.prompt?.max_width
+    if (configured === "auto") return Math.max(75, Math.floor(dimensions().width * 0.7))
+    return configured ?? Math.min(100, Math.max(80, Math.floor(dimensions().width * 0.85)))
+  })
+
   useBindings(() => ({
     commands: [
       {
@@ -24,7 +32,7 @@ function View(props: { api: TuiPluginApi; hidden: boolean; show: boolean; connec
   }))
 
   return (
-    <box width="100%" maxWidth={75} alignItems="center" paddingTop={3} flexShrink={1}>
+    <box width="100%" maxWidth={maxWidth()} alignItems="center" paddingTop={1} flexShrink={1}>
       <Show when={props.show}>
         <Tips api={props.api} connected={props.connected} />
       </Show>

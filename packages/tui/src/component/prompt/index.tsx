@@ -1350,11 +1350,10 @@ export function Prompt(props: PromptProps) {
       <box ref={(r: BoxRenderable) => (anchor = r)} visible={props.visible !== false} width="100%">
         <box
           width="100%"
-          border={["left"]}
-          borderColor={borderHighlight()}
-          customBorderChars={CardBorderChars}
+          flexDirection="row"
           marginBottom={1}
         >
+          <box width={1} backgroundColor={borderHighlight()} flexShrink={0} />
           <box
             paddingLeft={2}
             paddingRight={2}
@@ -1363,7 +1362,6 @@ export function Prompt(props: PromptProps) {
             flexShrink={0}
             backgroundColor={theme.backgroundElement}
             flexGrow={1}
-            width="100%"
           >
             <textarea
               width="100%"
