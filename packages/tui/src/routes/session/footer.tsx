@@ -73,10 +73,10 @@ export function Footer() {
               <text fg={theme.text}>
                 <Switch>
                   <Match when={mcpError()}>
-                    <span style={{ fg: theme.error }}>⊙ </span>
+                    <span style={{ fg: theme.error }}>• </span>
                   </Match>
                   <Match when={true}>
-                    <span style={{ fg: theme.success }}>⊙ </span>
+                    <span style={{ fg: theme.success }}>• </span>
                   </Match>
                 </Switch>
                 {mcp()} MCP
